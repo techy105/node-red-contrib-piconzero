@@ -5,7 +5,7 @@ module.exports = function(RED){
 		RED.nodes.createNode(this, config);
 
 		this.on("input", (msg, send, done) => {				
-			PiconZero.setOutput(parseFloat(config.motorId), parseFloat(config.value));
+			PiconZero.setOutput(parseFloat(config.outputid), parseFloat(config.value));
 
 			if(done){
 				done();
