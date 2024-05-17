@@ -49,38 +49,22 @@ function setMotor(motor, value){
 	throw new Error("Error in setMotor(), bad motor or value")
 }
 
-function forward (speed){
-    setMotor (0, speed);
-    setMotor (1, speed);
-}
-
-function reverse (speed){
-    setMotor (0, -speed);
-    setMotor (1, -speed);
-}
-
-function spinLeft (speed){
-    setMotor (0, -speed);
-    setMotor (1, speed);
-}
-
-function spinRight (speed){
-    setMotor (0, speed);
-    setMotor (1, -speed);
-}
-
-function stop(){
-    setMotor (0, 0);
-    setMotor (1,0);
-}
-
 // Read data for selected input channel (analog || digital)
 // Channel is in range 0 to 3
+
+//Read Only Registers - These are WORDs
+//-------------------------------------
+//Register  Name  			Type	Values
+//1 		Input0_Data   	Word	0 or 1 for Digital, 0..1023 for Analog
+//2 		Input1_Data   	Word	0 or 1 for Digital, 0..1023 for Analog
+//3 		Input2_Data  	Word	0 or 1 for Digital, 0..1023 for Analog
+//4 		Input3_Data   	Word	0 or 1 for Digital, 0..1023 for Analog
+
 function readInput (channel){
     if (channel >=0 && channel <= 3){
         for(let i=0;i<I2CRetries;i++){
             try {
-                return I2C.readWordSync (PZAddr, channel + 1);
+                return I2C.readWordSync(PZAddr, channel + 1);
             } catch(e){
                 console.error(`Error in readInput(): ${e.message}. Retrying ${i+1}/${I2CRetries}`)
 			}
@@ -91,11 +75,17 @@ function readInput (channel){
 	throw new Error("Error in readInput(), bad channel")
 }
 
+
+//Mode  Name    Type    Values
+//0     On/Off  Byte    0 is OFF, 1 is ON
+//1     PWM     Byte    0 to 100 percentage of ON time
+//2     Servo   Byte    -100 to + 100 Position in degrees
+//3     WS2812B 4 Bytes 0:Pixel ID, 1:Red, 2:Green, 3:Blue
 function setOutputConfig(output, value){
 	if (output >=0 && output <=5 && value >=0 && value <= 3){
 		for(let i=0;i<I2CRetries;i++){
  			try {
-				I2C.writeByteSync (PZAddr, channel + 1);
+				I2C.writeByteSync (PZAddr, COMMANDS.OUTCFG0+output, value);
 				return true;
 			} catch(e){
 				console.error(`Error in setOutputConfig(): ${e.message}. Retrying ${i+1}/${I2CRetries}`)
