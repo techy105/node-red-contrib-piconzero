@@ -39,5 +39,5 @@ module.exports = function(RED){
 		});
 
 	}
-	RED.nodes.registerType("Set Motor Value", SetMotorNode)
+	RED.nodes.registerType("Set Motor", SetMotorNode)
 }

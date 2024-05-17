@@ -8,7 +8,7 @@
  "node-red": {
   "nodes": {
    "Initilize": "InitNode.js",
-   "Set Motor Value": "SetMotorNode.js",
+   "Set Motor": "SetMotorNode.js",
    "Read Input": "ReadInputNode.js"
   }
  },
