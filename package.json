@@ -7,9 +7,9 @@
  "license": "MIT",
  "node-red": {
   "nodes": {
-   "PiconZero - Initilize": "InitNode.js",
-   "PiconZero - Set Motor Value": "SetMotorNode.js",
-   "PiconZero - Read Input": "ReadInputNode.js"
+   "Initilize": "InitNode.js",
+   "Set Motor Value": "SetMotorNode.js",
+   "Read Input": "ReadInputNode.js"
   }
  },
  "dependencies": {
