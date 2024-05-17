@@ -9,6 +9,12 @@ module.exports = function(RED){
 			
 			msg.ReadInputValue = PiconZero.readInput(parseInt(config.channel));
 
+			scope.status({
+				fill: "blue",
+				shape: "dot",
+				text: `Input channel ${config.channel} value is ${msg.ReadInputValue}`
+			});
+
 			send(msg);
 
 			if(done){
