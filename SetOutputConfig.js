@@ -6,7 +6,7 @@ module.exports = function(RED){
 
 		this.on("input", function(msg, send, done) {				
 			PiconZero.setOutputConfig(parseInt(config.outputid), parseInt(config.value));
-
+			console.log("Config value: " + config.value, typeof config.value);
 			let configMode;
 			switch(config.value){
 				case PiconZero.ONOFF: configMode = "On/Off"; break;
