@@ -18,10 +18,10 @@
 		},
 		oneditprepare: () => {
 			$("#node-input-motorid").typedInput({
+				type:"num",
 				types: [
 					{
 						value: 0,
-						multiple: "false",
 						options: [
 							{ value: 0, label: "Motor 0"},
 							{ value: 1, label: "Motor 1"}
@@ -31,7 +31,7 @@
 			})
 
 			$("#node-input-value").typedInput({
-				type:"str",
+				type:"num",
 				types:["num"],
 				typeField: "#node-input-value-type"
 			})
