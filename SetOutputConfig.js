@@ -23,7 +23,7 @@ module.exports = function(RED){
 			});
 
 			//Store for later so we can infer things about it.
-			const flow = scope.this.context().flow;
+			const flow = scope.context().flow;
 			flow.set("PiconZero_Output" + config.outputid, config.value);
 			
 
