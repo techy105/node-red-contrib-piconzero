@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Set Output Value',{
+        category: 'PiconZero',
+        color: '#FFAAAA',
+        inputs: 1,
+        outputs: 1,
+		icon: "font-awesome/fa-robot",
+		align: "left",
+		defaults: {
+			outputid: { 
+				value: 0,
+				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 5
+
+			},
+			value: {
+				value: 0,
+				validate: val => parseFloat(val) !== NaN
+			}
+		},
+		oneditprepare: () => {
+			$("#node-input-outputid").typedInput({
+				type:"str",
+				types:["num"],
+				typeField: "#node-input-outputid-type"
+			})
+
+			$("#node-input-value").typedInput({
+				type:"str",
+				types:["num"],
+				typeField: "#node-input-value-type"
+			})
+
+			
+		}
+    });
+</script>
+
+<script type="text/html" data-template-name="Set Output Value">
+     <div class="form-row">
+        <label for="node-input-motorid"><i class="fa fa-tag"></i> Output Id</label>
+        <input type="text" id="node-input-outputid" placeholder="Output id">
+        <input type="hidden" id="node-input-outputid-type" >
+    </div>
+     <div class="form-row">
+        <label for="node-input-value"><i class="fa fa-tag"></i> Value</label>
+        <input type="text" id="node-input-value" placeholder="Value">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="Set Output Value">
+    <p>Sets the value of an output.</p>
+	<ul>
+		<li>For On/Off, 0=Off, 1=On</li>
+		<li>For PWM, use a percentage (0-100) </li>
+		<li>For Servo, the position in degrees  (-100 - 100) </li>
+		<li>For WS2812B, use syntax PIXELID,RED,GREEN,BLUEe.g. 1,50,255,20</li>
+	</ul>
+</script>

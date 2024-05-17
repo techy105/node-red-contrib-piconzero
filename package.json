@@ -9,7 +9,9 @@
   "nodes": {
    "Initilize": "InitNode.js",
    "Set Motor": "SetMotorNode.js",
-   "Read Input": "ReadInputNode.js"
+   "Read Input": "ReadInputNode.js",
+   "Set Output Config": "SetOutputConfig.js",
+   "Set Output Value": "SetOutputValue.js"
   }
  },
  "dependencies": {

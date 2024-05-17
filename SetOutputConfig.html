@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Set Output Config',{
+        category: 'PiconZero',
+        color: '#FFAAAA',
+        inputs: 1,
+        outputs: 1,
+		icon: "font-awesome/fa-robot",
+		align: "left",
+		defaults: {
+			outputid: { 
+				value: 0,
+				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 5
+			},
+			value: {
+				value: 0,
+				validate: function(val){
+					switch(val){
+						case 0: return val === 0 || val ==- 1; break;
+						case 1: return val >= 0 && val <= 1; break;
+						case 2: return val >= 0 && val <= 2; break;
+						case 3: return val >= 0 && val <= 3; break;
+					}
+				}
+			}
+		},
+		oneditprepare: () => {
+			$("#node-input-outputid").typedInput({
+				type:"str",
+				types:["num"],
+				typeField: "#node-input-outputid-type"
+			})
+
+			$("#node-input-value").typedInput({
+				types: [
+					{
+						value: 0,
+						multiple: "false",
+						options: [
+							{ value: 0, label: "On/Off"},
+							{ value: 1, label: "PWM"},
+							{ value: 2, label: "Server"},
+							{ value: 3, label: "WS281B"}
+						]
+					}
+				]
+			})
+
+			
+		}
+    });
+</script>
+
+<script type="text/html" data-template-name="Set Output Config">
+     <div class="form-row">
+        <label for="node-input-motorid"><i class="fa fa-tag"></i> Output Id</label>
+        <input type="text" id="node-input-outputid" placeholder="Output id">
+        <input type="hidden" id="node-input-outputid-type" >
+    </div>
+     <div class="form-row">
+        <label for="node-input-value"><i class="fa fa-tag"></i> Value</label>
+        <input type="text" id="node-input-value" placeholder="Value">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="Set Motor">
+    <p>Configures an output.</p>
+</script>
