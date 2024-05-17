@@ -3,12 +3,14 @@ const PiconZero = require("./piconzerojs");
 module.exports = function(RED){
 	function SetOutputValue(config){
 		RED.nodes.createNode(this, config);
-		this.on("input", function(msg, send, done) {				
+		this.on("input", function(msg, send, done) {	
+
+			config.value = parseInt(config.value);	
 			PiconZero.setOutput(parseFloat(config.outputid), parseFloat(config.value));
 
 			let configMode;
 			let configValue;
-			switch(config.value){
+			switch(parseInt(config.value)){
 				case PiconZero.ONOFF: 
 					configMode = "On/Off"; 
 					configValue = config.value === 1 ? "On" : "Off"; 

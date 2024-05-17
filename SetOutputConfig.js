@@ -8,7 +8,7 @@ module.exports = function(RED){
 			PiconZero.setOutputConfig(parseInt(config.outputid), parseInt(config.value));
 			console.log("Config value: " + config.value, typeof config.value);
 			let configMode;
-			switch(config.value){
+			switch(parseInt(config.value)){
 				case PiconZero.ONOFF: configMode = "On/Off"; break;
 				case PiconZero.PWM: configMode = "PWM"; break;
 				case PiconZero.SERVO: configMode = "Servo"; break;
