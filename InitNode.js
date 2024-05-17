@@ -4,12 +4,11 @@ module.exports = function(RED){
 	function InitNode(config){
 		RED.nodes.createNode(this, config);
 
-		const scope = this;
-		this.on("input", (msg, send, done) => {
+		this.on("input", function(msg, send, done) {
 			
 			PiconZero.init();
 
-			scope.status({
+			this.status({
 				fill: "green",
 				shape: "dot",
 				text: "Initilized"

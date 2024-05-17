@@ -3,9 +3,8 @@ const PiconZero = require("./piconzerojs");
 module.exports = function(RED){
 	function SetOutputConfig(config){
 		RED.nodes.createNode(this, config);
-		const scope = this;
 
-		this.on("input", (msg, send, done) => {				
+		this.on("input", function(msg, send, done) {				
 			PiconZero.setOutputConfig(parseInt(config.outputid), parseInt(config.value));
 
 			let configMode;
@@ -23,7 +22,7 @@ module.exports = function(RED){
 			});
 
 			//Store for later so we can infer things about it.
-			const flow = scope.context().flow;
+			const flow = this.context().flow;
 			flow.set("PiconZero_Output" + config.outputid, config.value);
 			
 

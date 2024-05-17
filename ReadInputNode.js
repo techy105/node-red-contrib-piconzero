@@ -4,12 +4,11 @@ module.exports = function(RED){
 	function ReadInputNode(config){
 		RED.nodes.createNode(this, config);
 
-		const scope = this;
-		this.on("input", (msg, send, done) => {
+		this.on("input", function(msg, send, done) {
 			
 			msg.ReadInputValue = PiconZero.readInput(parseInt(config.channel));
 
-			scope.status({
+			this.status({
 				fill: "blue",
 				shape: "dot",
 				text: `Input channel ${config.channel} value is ${msg.ReadInputValue}`

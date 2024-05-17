@@ -3,8 +3,7 @@ const PiconZero = require("./piconzerojs");
 module.exports = function(RED){
 	function SetOutputValue(config){
 		RED.nodes.createNode(this, config);
-
-		this.on("input", (msg, send, done) => {				
+		this.on("input", function(msg, send, done) {				
 			PiconZero.setOutput(parseFloat(config.outputid), parseFloat(config.value));
 
 			let configMode;
@@ -28,7 +27,7 @@ module.exports = function(RED){
 				break;
 			}
 
-			scope.status({
+			this.status({
 				fill: "blue",
 				shape: "ring",
 				text: `${configMode} output ${config.outputid} value is ${configValue}`
