@@ -7,7 +7,7 @@ module.exports = function(RED){
 		const scope = this;
 		this.on("input", (msg, send, done) => {
 			
-			msg.ReadInputValue = PiconZero.readInput(config.channel);
+			msg.ReadInputValue = PiconZero.readInput(parseInt(config.channel));
 
 			send(msg);
 
