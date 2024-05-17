@@ -25,5 +25,7 @@ module.exports = function(RED){
 			PiconZero.cleanup();
 		})
 	}
-	RED.nodes.registerType("PiconZero - Initilize", InitNode)
+	RED.nodes.registerType("Initilize", InitNode, {
+
+	})
 }

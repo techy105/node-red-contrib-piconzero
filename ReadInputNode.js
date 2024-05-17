@@ -21,5 +21,5 @@ module.exports = function(RED){
 
 	}
 
-	RED.nodes.registerType("PiconZero - Read Input", ReadInputNode)
+	RED.nodes.registerType("Read Input", ReadInputNode)
 }
