@@ -11,7 +11,7 @@ module.exports = function(RED){
 
 			scope.status({
 				fill: "green",
-				shape: "check",
+				shape: "dot",
 				text: "Initilized"
 			})
 
@@ -21,8 +21,12 @@ module.exports = function(RED){
 			}
 		});
 
-		this.on("close", ()=> {
+		this.on("close", (done)=> {
 			PiconZero.cleanup();
+
+			if(done){
+				done();
+			}
 		})
 	}
 	RED.nodes.registerType("Initilize", InitNode)

@@ -16,6 +16,12 @@ module.exports = function(RED){
 			}
 		});
 
+		this.on("close", (done)=> {
+			if(done){
+				done();
+			}
+		})
+
 	}
 
 	RED.nodes.registerType("Read Input", ReadInputNode)

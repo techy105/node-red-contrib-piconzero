@@ -12,6 +12,11 @@ module.exports = function(RED){
 			}
 		});
 
+		this.on("close", (done)=> {
+			if(done){
+				done();
+			}
+		})
 	}
 	RED.nodes.registerType("Set Motor", SetMotorNode)
 }
