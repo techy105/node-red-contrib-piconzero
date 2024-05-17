@@ -1,7 +1,3 @@
-//TODO: module.exports
-
-
-
 //A direct port of: https://github.com/4tronix/PiconZero/blob/master/Python/piconzero.py
 const I2CBus = require("i2c-bus");
 
