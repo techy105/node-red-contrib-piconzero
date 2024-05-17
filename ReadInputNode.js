@@ -6,11 +6,8 @@ module.exports = function(RED){
 
 		const scope = this;
 		this.on("input", (msg, send, done) => {
-			if(msg.payload === "" || parseInt(msg.payload) === NaN){
-				return scope.error("Channel number required - Range 0-3.");
-			}
 			
-			msg.payload = PiconZero.readInput(msg.payload);
+			msg.ReadInputValue = PiconZero.readInput(config.channel);
 
 			send(msg);
 
