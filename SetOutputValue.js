@@ -4,7 +4,11 @@ module.exports = function(RED){
 	function SetOutputValue(config){
 		RED.nodes.createNode(this, config);
 		this.on("input", function(msg, send, done) {	
-			console.log(`OutputValue - MSG: ${msg.payload.value} | Config: ${config.value}`)
+
+			const value = RED.util.evaluateNodeProperty(config.value, "msg", this, msg)
+			console.log(`OutputValue - MSG: ${msg.payload.value} | Config: ${value}`)
+			
+			
 			config.value = parseInt(config.value);	
 			PiconZero.setOutput(parseFloat(config.outputid), parseFloat(config.value));
 
