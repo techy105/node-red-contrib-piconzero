@@ -26,6 +26,7 @@ module.exports = function(RED){
 			flow.set("PiconZero_Output" + config.outputid, config.value);
 			
 
+			send(msg);
 
 			if(done){
 				done();

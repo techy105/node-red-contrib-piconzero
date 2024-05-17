@@ -15,6 +15,7 @@ module.exports = function(RED){
 			})
 
 
+			send(msg);
 			if(done){
 				done();
 			}

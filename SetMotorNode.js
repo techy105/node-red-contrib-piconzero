@@ -7,6 +7,7 @@ module.exports = function(RED){
 		this.on("input", (msg, send, done) => {				
 			PiconZero.setMotor(parseInt(config.motorid), parseFloat(config.value));
 
+			send(msg);
 			if(done){
 				done();
 			}

@@ -33,6 +33,8 @@ module.exports = function(RED){
 				text: `${configMode} output ${config.outputid} value is ${configValue}`
 			});
 
+			send(msg);
+
 			if(done){
 				done();
 			}
