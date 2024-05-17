@@ -15,7 +15,7 @@ module.exports = function(RED){
 				case PiconZero.WS2812B: configMode = "WS2812B"; break;
 			}
 
-			scope.status({
+			this.status({
 				fill: "blue",
 				shape: "ring",
 				text: `Output ${config.outputid} is ${configMode}`
@@ -34,8 +34,8 @@ module.exports = function(RED){
 			return msg;
 		});
 
-		this.on("close", done => {
-			const flow = scope.this.context().flow;
+		this.on("close", function(done){
+			const flow = this.context().flow;
 
 			//Reset any vars we might have stored back to 0, as the Cleanup() function will be run anyway though Initilize..
 			for(var i=0;i<5;i++){
