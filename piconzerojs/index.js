@@ -1,7 +1,7 @@
 //A direct port of: https://github.com/4tronix/PiconZero/blob/master/Python/piconzero.py
 const I2CBus = require("i2c-bus");
 
-const I2C = I2CBus.openSync(0);
+const I2C = I2CBus.openSync(1);
 
 //I2C address of PiconZero
 const PZAddr = 0x22;
