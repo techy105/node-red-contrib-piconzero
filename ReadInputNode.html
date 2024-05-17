@@ -4,8 +4,14 @@
         color: '#fb1b0f',
         inputs: 1,
         outputs: 1,
+		outputLabe: "Input Value",
+		icon: "font-awesome/fa-robot",
+		align: "left",
 		defaults: {
-			channel: {value: 0}
+			channel: {
+				value: 0,
+				validate: (val) => parseFloat(val) !== NaN && val >= 0 && val <= 3
+			}
 		}
     });
 </script>
@@ -18,5 +24,5 @@
 </script>
 
 <script type="text/html" data-help-name="Read Input">
-    <p>Reads the value from a channel</p>
+    <p>Reads the value from a channel 0 - 3 </p>
 </script>

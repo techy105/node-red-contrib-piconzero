@@ -4,6 +4,8 @@
         color: '#fb1b0f',
         inputs: 1,
         outputs: 1,
+		icon: "font-awesome/fa-robot",
+		align: "left",
 		defaults: {
 			motorid: { 
 				value: 0,
@@ -13,6 +15,26 @@
 				value: 0,
 				validate: (val) => parseInt(val) !== NaN && val >= -128 && val <= 128
 			}
+		},
+		oneditprepare: () => {
+			$("#node-input-motorid").typedInput({
+				types: [
+					{
+						value: 0,
+						multiple: "false",
+						options: [
+							{ value: 0, label: "Motor 0"},
+							{ value: 1, label: "Motor 1"}
+						]
+					}
+				]
+			})
+
+			$("#node-input-value").typedInput({
+				type:"str",
+				types:["num"],
+				typeField: "#node-input-value-type"
+			})
 		}
     });
 </script>
@@ -25,6 +47,7 @@
      <div class="form-row">
         <label for="node-input-value"><i class="fa fa-tag"></i> Value</label>
         <input type="text" id="node-input-value" placeholder="Value">
+        <input type="hidden" id="node-input-value-type" >
     </div>
 </script>
 
