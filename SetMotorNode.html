@@ -1,12 +1,18 @@
 <script type="text/javascript">
     RED.nodes.registerType('Set Motor',{
         category: 'PiconZero',
-        color: '#a6bbcf',
+        color: '#fb1b0f',
         inputs: 1,
         outputs: 1,
 		defaults: {
-			motorid: { value: 0},
-			value: {value: 0}
+			motorid: { 
+				value: 0,
+				validate: (val) => val === 0 || val === 1
+			},
+			value: {
+				value: 0,
+				validate: (val) => parseInt(val) !== NaN && val >= -128 && val <= 128
+			}
 		}
     });
 </script>
