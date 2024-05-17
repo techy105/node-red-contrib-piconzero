@@ -18,6 +18,19 @@ const COMMANDS = {
 	INPERIOD0: 21
 }
 
+
+//Mode  Name    Type    Values
+//0     On/Off  Byte    0 is OFF, 1 is ON
+//1     PWM     Byte    0 to 100 percentage of ON time
+//2     Servo   Byte    -100 to + 100 Position in degrees
+//3     WS2812B 4 Bytes 0:Pixel ID, 1:Red, 2:Green, 3:Blue
+const CONFIG_TYPES = {
+	ONOFF: 0,
+	PWM: 1,
+	SERVO: 2,
+	WS2812B: 3
+}
+
 const I2CRetries = 10;
 
 
@@ -261,5 +274,6 @@ module.exports = {
 	setPixel,
 	setAllPixels,
 	updatePixels,
-	setBrightness
+	setBrightness,
+	CONFIG_TYPES
 }
