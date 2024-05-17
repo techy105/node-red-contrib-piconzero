@@ -37,6 +37,8 @@ module.exports = function(RED){
 			if(done){
 				done();
 			}
+
+			return msg;
 		});
 
 	}

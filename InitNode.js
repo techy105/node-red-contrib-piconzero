@@ -19,6 +19,8 @@ module.exports = function(RED){
 			if(done){
 				done();
 			}
+
+			return msg;
 		});
 
 		this.on("close", (done)=> {
