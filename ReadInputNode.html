@@ -12,6 +12,23 @@
 				value: 0,
 				validate: (val) => parseFloat(val) !== NaN && val >= 0 && val <= 3
 			}
+		},
+		
+		oneditprepare: () => {
+			$("#node-input-channel").typedInput({
+				types: [
+					{
+						value: 0,
+						multiple: "false",
+						options: [
+							{ value: 0, label: "Channnel 0"},
+							{ value: 1, label: "Channnel 1"},
+							{ value: 2, label: "Channnel 2"},
+							{ value: 3, label: "Channnel 3"},
+						]
+					}
+				]
+			})
 		}
     });
 </script>
