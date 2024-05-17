@@ -26,7 +26,6 @@
 				types: [
 					{
 						value: 0,
-						multiple: "false",
 						options: [
 							{ value: 0, label: "On/Off"},
 							{ value: 1, label: "PWM"},
@@ -44,7 +43,7 @@
 
 <script type="text/html" data-template-name="Set Output Config">
      <div class="form-row">
-        <label for="node-input-motorid"><i class="fa fa-tag"></i> Output Id</label>
+        <label for="node-input-outputid"><i class="fa fa-tag"></i> Output Id</label>
         <input type="text" id="node-input-outputid" placeholder="Output id">
         <input type="hidden" id="node-input-outputid-type" >
     </div>
@@ -55,5 +54,5 @@
 </script>
 
 <script type="text/html" data-help-name="Set Output Config">
-    <p>Configures an output.</p>
+    <p>Configures an output to be On/Off, PWM, Servo, or WS281B</p>
 </script>
