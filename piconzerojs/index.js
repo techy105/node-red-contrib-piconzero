@@ -31,7 +31,7 @@ function getRevision(){
 			const revisionData = I2C.i2cReadSync(PZAddr, 0);
 			return [revisionData/256, revisionData%256]
 		} catch(e){
-			console.error("Error in getRevision(), retrying...");
+			throw new Error("Error in getRevision(), retrying...");
 		}
 	}
 }
@@ -43,7 +43,7 @@ function setMotor(motor, value){
                 I2C.writeByteSync(PZAddr, motor, value);
                 return true;
 			} catch(e){
-				console.error("Error in setMotor(), retrying")
+				throw new Error("Error in setMotor(), retrying")
 			}
 		}
 	}
@@ -84,7 +84,7 @@ function readInput (channel){
             try {
                 return I2C.readWordSync (PZAddr, channel + 1);
             } catch(e){
-                console.error("Error in readChannel(), retrying");
+                throw new Error("Error in readChannel(), retrying");
 			}
 		}
 	}
@@ -99,7 +99,7 @@ function setOutputConfig(output, value){
 				I2C.writeByteSync (PZAddr, channel + 1);
 				return true;
 			} catch(e){
-				console.debug("Error in setOutputConfig(), retrying")
+				throw new Error("Error in setOutputConfig(), retrying")
 			}
 		}
 	}
@@ -124,7 +124,7 @@ function setInputConfig (channel, value, pullup = false, period = 2000){
 				}
                 break
 			} catch(e) { 
-				console.error("Error in setInputConfig(), retrying")
+				throw new Error("Error in setInputConfig(), retrying")
 			} 
 		} 
 	} 
@@ -145,7 +145,7 @@ function setOutput (channel, value){
                 I2C.writeByteSync (PZAddr, COMMANDS.OUTPUT0 + channel, value);
 				return true;
             } catch(e){
-                console.error("Error in setOutput(), retrying")
+                throw new Error("Error in setOutput(), retrying")
 			}
 		}
 	}
@@ -163,7 +163,7 @@ function setPixel (Pixel, Red, Green, Blue, Update=true){
             I2C.writeI2cBlockSync (PZAddr, Update, pixelData)
             return true;
         } catch(e){
-             console.error("Error in setPixel(), retrying")
+             throw new Error("Error in setPixel(), retrying")
 		}
 	}
 
@@ -177,7 +177,7 @@ function setAllPixels (Red, Green, Blue, Update=true){
             I2C.writeI2cBlockSync(PZAddr, Update, pixelData);
             return true;
         } catch(e){
-            console.error("Error in setAllPixels(), retrying")
+            throw new Error("Error in setAllPixels(), retrying")
 		}
 	}
 
@@ -190,7 +190,7 @@ function updatePixels(){
             I2C.writeByteSync (PZAddr, COMMANDS.UPDATENOW, 0)
             return true;
         } catch(e){
-            console.error("Error in updatePixels(), retrying")
+            throw new Error("Error in updatePixels(), retrying")
 		}
 	}
 	return false;
@@ -206,7 +206,7 @@ function setBrightness (brightness){
             I2C.writeByteSync (PZAddr, COMMANDS.SETBRIGHT, brightness)
              return true;
         } catch(e){
-            console.error("Error in setBrightness(), retrying")
+            throw new Error("Error in setBrightness(), retrying")
 		}
 	}
 }
@@ -220,7 +220,7 @@ function init (debug=false){
             I2C.writeByteSync (PZAddr, COMMANDS.RESET, 0)
             return true;
         } catch(e){
-            console.error("Error in init(), retrying")
+            throw new Error("Error in init(), retrying")
     		time.sleep(0.01)  //1ms delay to allow time to complete
 		}
 
@@ -238,7 +238,7 @@ function cleanup (){
             I2C.writeByteSync (PZAddr, COMMANDS.RESET, 0)
             return true;
         } catch(e){
-            console.error("Error in cleanup(), retrying")
+            throw new Error("Error in cleanup(), retrying")
 			time.sleep(0.001)   // 1ms delay to allow time to complete
 		}
 	}
