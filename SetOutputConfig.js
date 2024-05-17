@@ -6,13 +6,14 @@ module.exports = function(RED){
 
 		this.on("input", function(msg, send, done) {				
 			PiconZero.setOutputConfig(parseInt(config.outputid), parseInt(config.value));
-			console.log("Config value: " + config.value, typeof config.value);
+
 			let configMode;
 			switch(parseInt(config.value)){
-				case PiconZero.ONOFF: configMode = "On/Off"; break;
-				case PiconZero.PWM: configMode = "PWM"; break;
-				case PiconZero.SERVO: configMode = "Servo"; break;
-				case PiconZero.WS2812B: configMode = "WS2812B"; break;
+				default: configMode = "Unknown: " + config.value; break;
+				case PiconZero.CONFIG_TYPES.ONOFF: configMode = "On/Off"; break;
+				case PiconZero.CONFIG_TYPES.PWM: configMode = "PWM"; break;
+				case PiconZero.CONFIG_TYPES.SERVO: configMode = "Servo"; break;
+				case PiconZero.CONFIG_TYPES.WS2812B: configMode = "WS2812B"; break;
 			}
 
 			this.status({
