@@ -19,6 +19,7 @@ module.exports = function(RED){
 				throw new Error("'output[value]' not found in payload or node config.")
 			}
 
+			const flow = this.context().flow;
 			const outputType = flow.get("PiconZero_Output" + outputId + "Config");
 			if(!outputType){
 				outputType = 0;
