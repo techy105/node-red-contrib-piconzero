@@ -32,7 +32,7 @@ module.exports = function(RED){
 			this.status({
 				fill: "blue",
 				shape: "ring",
-				text: `${configModeValues.mode} output ${outputid} value is ${configModeValues.value}`
+				text: `${configModeValues.mode} output ${outputId} value is ${configModeValues.value}`
 			});
 
 			send(msg);
