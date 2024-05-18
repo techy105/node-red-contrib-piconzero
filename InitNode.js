@@ -11,7 +11,7 @@ module.exports = function(RED){
 			this.status({
 				fill: "green",
 				shape: "dot",
-				text: "Initilised"
+				text: "Initialised"
 			})
 
 			const flow = this.context().flow;
