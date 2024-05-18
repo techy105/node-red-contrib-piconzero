@@ -1,4 +1,5 @@
 const PiconZero = require("./piconzerojs");
+const util = require("./util");
 
 module.exports = function(RED){
 	function ReadInputNode(config){
@@ -6,12 +7,21 @@ module.exports = function(RED){
 
 		this.on("input", function(msg, send, done) {
 			
-			msg.ReadInputValue = PiconZero.readInput(parseInt(config.channel));
+			util.checkIsInitialised();
+			
+			const channel = RED.util.evaluateNodeProperty(msg.payload?.channel, "msg", this, msg) || config.channel;
+			channel = parseInt(channel);
+			if(channel === NaN){
+				throw new Error("'channel' not found in payload or node config");
+			}
+
+
+			msg.ReadInputValue = PiconZero.readInput(channel);
 
 			this.status({
 				fill: "blue",
 				shape: "dot",
-				text: `Input channel ${config.channel} value is ${msg.ReadInputValue}`
+				text: `Input channel ${channel} value is ${msg.ReadInputValue}`
 			});
 
 			send(msg);

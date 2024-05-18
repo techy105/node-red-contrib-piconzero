@@ -1,46 +1,39 @@
 const PiconZero = require("./piconzerojs");
+const util = require("./util");
+
 
 module.exports = function(RED){
 	function SetOutputValue(config){
 		RED.nodes.createNode(this, config);
 		this.on("input", function(msg, send, done) {	
+			util.checkIsInitialised();
 
-			const value = RED.util.evaluateNodeProperty(config.value, "msg", this, msg);
-			const outputType = this.context().flow.get("PiconZero_Output" + config.outputid+"Config");
+
+			const outputId = RED.util.evaluateNodeProperty(msg.payload?.outputid, "msg", this, msg) || config.outputid;
+			outputId = parseInt(outputId);
+			if(outputId === NaN){
+				throw new Error("'outputid' not found in payload or node config");
+			}
+
+			const value = RED.util.evaluateNodeProperty(msg.payload?.value, "msg", this, msg) || config.value;
+			value = parseInt(value);
+			if(value === NaN){
+				throw new Error("'value' not found in payload or node config.")
+			}
+
+			const outputType = flow.get("PiconZero_Output" + outputId + "Config");
 			if(!outputType){
-				throw new Error("Output " + config.outputid + " config is not set.");
-			}
-
-			console.log(`OutputValue - MSG: ${msg.payload.value} | Config: ${value}`)
+				outputType = 0;
+			}			
 			
-			
-			PiconZero.setOutput(parseFloat(config.outputid), parseFloat(value));
+			PiconZero.setOutput(outputId, value);
 
-			let configMode;
-			let configValue;
-			switch(parseInt(outputType)){
-				case PiconZero.CONFIG_TYPES.ONOFF: 
-					configMode = "On/Off"; 
-					configValue = value === 1 ? "On" : "Off"; 
-				break;
-				case PiconZero.CONFIG_TYPES.PWM: 
-					configMode = "PWM"; 
-					configValue = value + "%"; 
-				break;
-				case PiconZero.CONFIG_TYPES.SERVO: 
-					configMode = "Servo"; 
-					configValue = value + "deg"
-				break;
-				case PiconZero.CONFIG_TYPES.WS2812B: 
-					configMode = "WS2812B"; 
-					configValue = value
-				break;
-			}
+			const configModeValues = util.getConfigModeValue(outputType, value);
 
 			this.status({
 				fill: "blue",
 				shape: "ring",
-				text: `${configMode} output ${config.outputid} value is ${configValue}`
+				text: `${configModeValues.mode} output ${outputid} value is ${configModeValues.value}`
 			});
 
 			send(msg);

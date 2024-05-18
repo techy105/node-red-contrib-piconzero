@@ -1,30 +1,39 @@
 const PiconZero = require("./piconzerojs");
+const util = require("./util");
 
 module.exports = function(RED){
 	function SetOutputConfig(config){
 		RED.nodes.createNode(this, config);
 
-		this.on("input", function(msg, send, done) {				
-			PiconZero.setOutputConfig(parseInt(config.outputid), parseInt(config.value));
+		this.on("input", function(msg, send, done) {	
+			util.checkIsInitialised();
 
-			let configMode;
-			switch(parseInt(config.value)){
-				default: configMode = "Unknown: " + config.value; break;
-				case PiconZero.CONFIG_TYPES.ONOFF: configMode = "On/Off"; break;
-				case PiconZero.CONFIG_TYPES.PWM: configMode = "PWM"; break;
-				case PiconZero.CONFIG_TYPES.SERVO: configMode = "Servo"; break;
-				case PiconZero.CONFIG_TYPES.WS2812B: configMode = "WS2812B"; break;
+
+			const outputId = RED.util.evaluateNodeProperty(msg.payload?.outputid, "msg", this, msg) || config.outputid;
+			outputId = parseInt(outputId);
+			if(outputId === NaN){
+				throw new Error("'outputid' not found in payload or node config");
 			}
+
+			const value = RED.util.evaluateNodeProperty(msg.payload?.value, "msg", this, msg) || config.value;
+			value = parseInt(value);
+			if(value === NaN){
+				throw new Error("'value' not found in payload or node config.")
+			}
+
+			PiconZero.setOutputConfig(outputId, value);
+
+
+			const configModeValue = util.getConfigModeValue(value);
 
 			this.status({
 				fill: "blue",
 				shape: "ring",
-				text: `Output ${config.outputid} is ${configMode}`
+				text: `Output ${outputId} is ${configModeValue}`
 			});
 
 			//Store for later so we can infer things about it.
-			const flow = this.context().flow;
-			flow.set("PiconZero_Output" + config.outputid, config.value);
+			flow.set("PiconZero_Output" + outputId, value);
 			
 
 			send(msg);
