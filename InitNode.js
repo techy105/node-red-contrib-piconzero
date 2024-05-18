@@ -11,8 +11,11 @@ module.exports = function(RED){
 			this.status({
 				fill: "green",
 				shape: "dot",
-				text: "Initilized"
+				text: "Initilised"
 			})
+
+			const flow = this.context().flow;
+			flow.set("PiconZero_IsInitialised", true);
 
 
 			send(msg);
@@ -31,5 +34,5 @@ module.exports = function(RED){
 			}
 		})
 	}
-	RED.nodes.registerType("Initilize", InitNode)
+	RED.nodes.registerType("Initilise", InitNode)
 }
