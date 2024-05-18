@@ -9,12 +9,12 @@ module.exports = function(RED){
 			util.checkIsInitialised(this);
 
 
-			const outputId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.output?.id, "msg", this, msg) || config.outputid);
+			const outputId = parseInt(msg.payload?.output?.id || config.outputid);
 			if(outputId === NaN){
 				throw new Error("'output[id]' not found in payload or node config");
 			}
 
-			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.output?.value, "msg", this, msg) || config.value);
+			const value = parseInt(msg.payload?.output?.value || config.value);
 			if(value === NaN){
 				throw new Error("'output[value]' not found in payload or node config.")
 			}
