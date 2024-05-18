@@ -6,7 +6,7 @@ module.exports = function(RED){
 	function SetMotorNode(config){
 		RED.nodes.createNode(this, config);
 
-		this.on("input", (msg, send, done) => {				
+		this.on("input", function(msg, send, done) {				
 
 			util.checkIsInitialised();
 
