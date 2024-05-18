@@ -24,8 +24,8 @@
 			})
 
 			$("#node-input-value").typedInput({
-				 type:"msg",
-    			types:["msg", "flow","global"],
+				type:"num",
+    			types:["num"],
 				typeField: "#node-input-value-type"
 			})
 
@@ -46,9 +46,9 @@
         <input type="hidden" id="node-input-value-type" placeholder="Value">
 		<ul>
 			<li>For On/Off, 0=Off, 1=On</li>
-			<li>For PWM, use a percentage (0-100) </li>
+			<li>For PWM, use a percentage (0 - 100) </li>
 			<li>For Servo, the position in degrees  (-100 - 100) </li>
-			<li>For WS2812B, use syntax PIXELID,RED,GREEN,BLUEe.g. 1,50,255,20</li>
+			<li>For WS2812B, use syntax PIXELID,RED,GREEN,BLUE e.g. 1,50,255,20</li>
 		</ul>
     </div>
 </script>
