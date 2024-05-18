@@ -6,6 +6,10 @@ module.exports = function(RED){
 		this.on("input", function(msg, send, done) {	
 
 			const value = RED.util.evaluateNodeProperty(config.value, "msg", this, msg);
+			const outputType = this.context().flow.get("PiconZero_Output" + config.outputid+"Config");
+			if(!outputType){
+				throw new Error("Output " + config.outputid + " config is not set.");
+			}
 
 			console.log(`OutputValue - MSG: ${msg.payload.value} | Config: ${value}`)
 			
@@ -14,7 +18,7 @@ module.exports = function(RED){
 
 			let configMode;
 			let configValue;
-			switch(parseInt(value)){
+			switch(parseInt(outputType)){
 				case PiconZero.CONFIG_TYPES.ONOFF: 
 					configMode = "On/Off"; 
 					configValue = value === 1 ? "On" : "Off"; 
