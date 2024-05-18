@@ -7,7 +7,7 @@ module.exports = function(RED){
 
 		this.on("input", function(msg, send, done) {
 			
-			util.checkIsInitialised();
+			util.checkIsInitialised(this);
 
 			const channel = parseInt(RED.util.evaluateNodeProperty(msg.payload?.channel, "msg", this, msg) || config.channel);
 			if(channel === NaN){

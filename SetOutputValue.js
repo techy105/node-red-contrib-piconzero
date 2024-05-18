@@ -6,7 +6,7 @@ module.exports = function(RED){
 	function SetOutputValue(config){
 		RED.nodes.createNode(this, config);
 		this.on("input", function(msg, send, done) {	
-			util.checkIsInitialised();
+			util.checkIsInitialised(this);
 
 
 			const outputId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.outputid, "msg", this, msg) || config.outputid);

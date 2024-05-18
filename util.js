@@ -1,7 +1,7 @@
 const PiconZero = require("./piconzerojs");
 
-function checkIsInitialised(){
-	const flow = this.context().flow;
+function checkIsInitialised(scope){
+	const flow = scope.context().flow;
 	if(flow.get("PiconZero_IsInitialised") === null){
 		throw new Error("PiconZero is not initialised");
 	}

@@ -8,7 +8,7 @@ module.exports = function(RED){
 
 		this.on("input", function(msg, send, done) {				
 
-			util.checkIsInitialised();
+			util.checkIsInitialised(this);
 
 			const motorId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.motorid, "msg", this, msg) || config.motorid);
 			if(motorId === NaN){
