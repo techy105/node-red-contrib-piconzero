@@ -7,7 +7,7 @@
  "license": "MIT",
  "node-red": {
   "nodes": {
-   "Initilize": "InitNode.js",
+   "Initialise": "InitNode.js",
    "Set Motor": "SetMotorNode.js",
    "Read Input": "ReadInputNode.js",
    "Set Output Config": "SetOutputConfig.js",
