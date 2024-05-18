@@ -20,13 +20,10 @@ module.exports = function(RED){
 			}
 
 			const flow = this.context().flow;
-			const outputType = flow.get("PiconZero_Output" + outputId + "Config");
-			if(!outputType){
-				outputType = 0;
-			}			
 			
 			PiconZero.setOutput(outputId, value);
 
+			const outputType = flow.get("PiconZero_Output" + outputId + "Config");		
 			const configModeValues = util.getConfigModeValue(outputType, value);
 
 			this.status({
