@@ -32,7 +32,7 @@ module.exports = function(RED){
 
 			//Store for later so we can infer things about it.
 			const flow = this.context().flow;
-			flow.set("PiconZero_Output" + outputId, value);
+			flow.set("PiconZero_Output" + outputId + "Config", value);
 			
 
 			send(msg);
