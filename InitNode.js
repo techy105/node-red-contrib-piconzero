@@ -34,5 +34,5 @@ module.exports = function(RED){
 			}
 		})
 	}
-	RED.nodes.registerType("Initilise", InitNode)
+	RED.nodes.registerType("Initialise", InitNode)
 }
