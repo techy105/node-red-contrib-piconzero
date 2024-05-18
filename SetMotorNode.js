@@ -10,12 +10,12 @@ module.exports = function(RED){
 
 			util.checkIsInitialised(this);
 
-			const motorId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.motor.id, "msg", this, msg) || config.motorid);
+			const motorId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.motor?.id, "msg", this, msg) || config.motorid);
 			if(motorId === NaN){
 				throw new Error("'motor[id]' not found in payload or node config");
 			}
 
-			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.motor.value, "msg", this, msg) || config.value);
+			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.motor?.value, "msg", this, msg) || config.value);
 			if(value === NaN){
 				throw new Error("'motor[value]' not found in payload or node config.")
 			}
