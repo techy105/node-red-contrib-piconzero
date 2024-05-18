@@ -9,9 +9,9 @@ module.exports = function(RED){
 			
 			util.checkIsInitialised(this);
 
-			const channel = parseInt(RED.util.evaluateNodeProperty(msg.payload?.channel, "msg", this, msg) || config.channel);
+			const channel = parseInt(RED.util.evaluateNodeProperty(msg.payload?.input[id], "msg", this, msg) || config.channel);
 			if(channel === NaN){
-				throw new Error("'channel' not found in payload or node config");
+				throw new Error("'input[id]' not found in payload or node config");
 			}
 
 

@@ -9,14 +9,14 @@ module.exports = function(RED){
 			util.checkIsInitialised(this);
 
 
-			const outputId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.outputid, "msg", this, msg) || config.outputid);
+			const outputId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.outputConfig.id, "msg", this, msg) || config.outputid);
 			if(outputId === NaN){
-				throw new Error("'outputid' not found in payload or node config");
+				throw new Error("'outputConfig[id]' not found in payload or node config");
 			}
 
-			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.value, "msg", this, msg) || config.value);
+			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.outputConfig.value, "msg", this, msg) || config.value);
 			if(value === NaN){
-				throw new Error("'value' not found in payload or node config.")
+				throw new Error("'outputConfig[value]' not found in payload or node config.")
 			}
 
 			PiconZero.setOutputConfig(outputId, value);
@@ -31,6 +31,7 @@ module.exports = function(RED){
 			});
 
 			//Store for later so we can infer things about it.
+			const flow = this.context().flow;
 			flow.set("PiconZero_Output" + outputId, value);
 			
 
