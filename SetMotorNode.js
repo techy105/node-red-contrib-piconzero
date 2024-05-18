@@ -12,7 +12,7 @@ module.exports = function(RED){
 
 			const motorId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.motorid, "msg", this, msg) || config.motorid);
 			if(motorId === NaN){
-				throw new Error("'motorId' not found in payload or node config");
+				throw new Error("'motorid' not found in payload or node config");
 			}
 
 			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.value, "msg", this, msg) || config.value);
@@ -20,7 +20,7 @@ module.exports = function(RED){
 				throw new Error("'value' not found in payload or node config.")
 			}
 
-			PiconZero.setMotor(parseInt(motorId), parseFloat(value));
+			PiconZero.setMotor(motorId, value);
 
 			send(msg);
 			if(done){
