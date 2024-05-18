@@ -46,8 +46,10 @@
     </div>
      <div class="form-row">
         <label for="node-input-value"><i class="fa fa-tag"></i> Value</label>
-        <input type="text" id="node-input-value" placeholder="Value">
+        <input type="text" id="node-input-value" placeholder="Value" min="-128" max="128">
         <input type="hidden" id="node-input-value-type" >
+
+		<p>Range: -128 - 128</p>
     </div>
 </script>
 
