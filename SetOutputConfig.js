@@ -9,14 +9,12 @@ module.exports = function(RED){
 			util.checkIsInitialised();
 
 
-			const outputId = RED.util.evaluateNodeProperty(msg.payload?.outputid, "msg", this, msg) || config.outputid;
-			outputId = parseInt(outputId);
+			const outputId = parseInt(RED.util.evaluateNodeProperty(msg.payload?.outputid, "msg", this, msg) || config.outputid);
 			if(outputId === NaN){
 				throw new Error("'outputid' not found in payload or node config");
 			}
 
-			const value = RED.util.evaluateNodeProperty(msg.payload?.value, "msg", this, msg) || config.value;
-			value = parseInt(value);
+			const value = parseInt(RED.util.evaluateNodeProperty(msg.payload?.value, "msg", this, msg) || config.value);
 			if(value === NaN){
 				throw new Error("'value' not found in payload or node config.")
 			}

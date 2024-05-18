@@ -8,10 +8,10 @@ function checkIsInitialised(){
 }
 
 
-function getConfigModeValue(configMode, value){
+function getConfigModeValue(mode, value){
 	let configMode;
 	let configValue;
-	switch(outputType){
+	switch(mode){
 		case PiconZero.CONFIG_TYPES.ONOFF: 
 			configMode = "On/Off"; 
 			configValue = value === 1 ? "On" : "Off"; 
