@@ -12,7 +12,8 @@
    "Read Input": "nodes/ReadInput/ReadInput.js",
    "Set Output Mode": "nodes/SetOutputMode/SetOutputMode.js",
    "Set Output Value": "nodes/SetOutputValue/SetOutputValue.js",
-   "Set Input Mode": "nodes/SetOutputValue/SetInputMode.js"
+   "Set Input Mode": "nodes/SetInputMode/SetInputMode.js",
+   "Cleanup": "nodes/Cleanup/Cleanup.js"
   }
  },
  "dependencies": {
