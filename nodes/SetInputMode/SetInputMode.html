@@ -1,0 +1,87 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Set Input Mode',{
+        category: 'PiconZero',
+        color: '#FFAAAA',
+        inputs: 1,
+        outputs: 1,
+		icon: "font-awesome/fa-robot",
+		align: "left",
+		defaults: {
+			inputid: { 
+				value: 0,
+				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 3
+
+			},
+			mode: {
+				value: 0
+			},
+			pullup: {
+				value: false
+			},
+			period: {
+				value: 2000,
+				validate: val => parseInt(val) && val > 0
+			}
+		},
+		oneditprepare: () => {
+			$("#node-input-inputid").typedInput({
+				types:["num"],
+				typeField: "#node-input-inputid-type"
+			})
+			$("#node-input-period").typedInput({
+				types:["num"],
+				typeField: "#node-input-period-type"
+			})
+			$("#node-input-pullup").typedInput({
+				types:["bool"],
+				typeField: "#node-input-pullup-type"
+			})
+
+			$("#node-input-mode").typedInput({
+				type:"mode",
+				types: [
+					{
+						value: 0,
+						options: [
+							{ value: 0, label: "Digital"},
+							{ value: 1, label: "Analog"},
+							{ value: 2, label: "DS18B20"},
+							//Purposly omit 3 as its not included by the python code.
+							{ value: 4, label: "Duty cycle"},
+							{ value: 5, label: "Pulse Width"},
+						]
+					}
+				]
+			})
+
+			
+		}
+    });
+</script>
+
+<script type="text/html" data-template-name="Set Input Mode">
+     <div class="form-row">
+        <label for="node-input-inputid"><i class="fa fa-tag"></i> Output Id</label>
+        <input type="text" id="node-input-inputid" placeholder="Output id">
+        <input type="hidden" id="node-input-inputid-type" >
+    </div>
+     <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-tag"></i> Mode</label>
+        <input type="text" id="node-input-mode" placeholder="Mode">
+        <input type="hidden" id="node-input-mode-type" placeholder="Value">
+    </div>
+     <div class="form-row">
+        <label for="node-input-pullup"><i class="fa fa-tag"></i> Pullup?</label>
+        <input type="text" id="node-input-pullup" placeholder="Pullup">
+        <input type="hidden" id="node-input-pullup-type" placeholder="Value">
+    </div>
+     <div class="form-row">
+        <label for="node-input-Period"><i class="fa fa-tag"></i> Period</label>
+        <input type="text" id="node-input-Period" placeholder="Period">
+        <input type="hidden" id="node-input-Period-type" placeholder="Value">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="Set Input Mode">
+    <p>Sets the mode of an input</p>
+</script>
