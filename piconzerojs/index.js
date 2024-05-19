@@ -255,6 +255,7 @@ function cleanup (){
 }
 //---------------------------------------------
 
+/** Code below is NOT proted from python **/
 function wait(ms){
 	const tsNow = Date.now();
 	const tsTarget = tsNow + ms;
@@ -262,6 +263,7 @@ function wait(ms){
 		var noop;
 	}
 }
+
 module.exports = {
 	init,
 	cleanup,
