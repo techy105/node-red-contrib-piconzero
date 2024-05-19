@@ -2,27 +2,27 @@ const PiconZero = require("../../piconzerojs");
 const util = require("../../lib/util");
 
 module.exports = function(RED){
-	function SetOutputConfig(config){
+	function SetOutputMode(config){
 		RED.nodes.createNode(this, config);
 
 		this.on("input", function(msg, send, done) {	
 			util.checkIsInitialised(this);
 
 
-			const outputId = parseInt(msg.payload?.outputConfig?.id || config.outputid);
+			const outputId = parseInt(msg.payload?.output?.id || config.outputid);
 			if(outputId === NaN){
-				throw new Error("'outputConfig[id]' not found in payload or node config");
+				throw new Error("'output[id]' not found in payload or node config");
 			}
 
-			const value = parseInt(msg.payload?.outputConfig?.value || config.value);
-			if(value === NaN){
-				throw new Error("'outputConfig[value]' not found in payload or node config.")
+			const mode = parseInt(msg.payload?.output?.mode || config.mode);
+			if(mode === NaN){
+				throw new Error("'output[mode]' not found in payload or node config.")
 			}
 
-			PiconZero.setOutputConfig(outputId, value);
+			PiconZero.setOutputConfig(outputId, mode);
 
 
-			const configModeValue = util.getConfigModeValue(value);
+			const configModeValue = util.getConfigModeValue(mode);
 
 			this.status({
 				fill: "blue",
@@ -32,7 +32,7 @@ module.exports = function(RED){
 
 			//Store for later so we can infer things about it.
 			const flow = this.context().flow;
-			flow.set(util.GLOBAL_PREFIX + "Output" + outputId + "Config", value);
+			flow.set(util.GLOBAL_PREFIX + "Output" + outputId + "Mode", mode);
 			
 
 			send(msg);
@@ -49,9 +49,9 @@ module.exports = function(RED){
 
 			//Reset any vars we might have stored back to 0, as the Cleanup() function will be run anyway though Initilize..
 			for(var i=0;i<5;i++){
-				let outputConfig = flow.get("PiconZero_Output" + i + "Config");
-				if(outputConfig){
-					flow.set("PiconZero_Output" + i + "Config", 0)
+				let outputMode = flow.get(util.GLOBAL_PREFIX + "Output" + i + "Mode");
+				if(outputMode){
+					flow.set(util.GLOBAL_PREFIX + "Output" + i + "Mode", 0)
 				}
 			}
 
@@ -61,5 +61,5 @@ module.exports = function(RED){
 		})
 
 	}
-	RED.nodes.registerType("Set Output Config", SetOutputConfig)
+	RED.nodes.registerType("Set Output Mode", SetOutputMode)
 }

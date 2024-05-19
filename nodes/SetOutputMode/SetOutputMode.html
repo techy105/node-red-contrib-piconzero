@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('Set Output Config',{
+    RED.nodes.registerType('Set Output Mode',{
         category: 'PiconZero',
         color: '#FFAAAA',
         inputs: 1,
@@ -11,7 +11,7 @@
 				value: 0,
 				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 5
 			},
-			value: {
+			mode: {
 				value: 0
 			}
 		},
@@ -22,8 +22,8 @@
 				typeField: "#node-input-outputid-type"
 			})
 
-			$("#node-input-value").typedInput({
-				type:"value",
+			$("#node-input-mode").typedInput({
+				type:"mode",
 				types: [
 					{
 						value: 0,
@@ -42,18 +42,18 @@
     });
 </script>
 
-<script type="text/html" data-template-name="Set Output Config">
+<script type="text/html" data-template-name="Set Output Mode">
      <div class="form-row">
         <label for="node-input-outputid"><i class="fa fa-tag"></i> Output Id</label>
         <input type="text" id="node-input-outputid" placeholder="Output id">
         <input type="hidden" id="node-input-outputid-type" >
     </div>
      <div class="form-row">
-        <label for="node-input-value"><i class="fa fa-tag"></i> Value</label>
-        <input type="text" id="node-input-value" placeholder="Value">
+        <label for="node-input-mode"><i class="fa fa-tag"></i> Mode</label>
+        <input type="text" id="node-input-mode" placeholder="Mode">
     </div>
 </script>
 
-<script type="text/html" data-help-name="Set Output Config">
+<script type="text/html" data-help-name="Set Output Mode">
     <p>Configures an output to be On/Off, PWM, Servo, or WS281B</p>
 </script>

@@ -23,7 +23,7 @@ module.exports = function(RED){
 			
 			PiconZero.setOutput(outputId, value);
 
-			const outputType = flow.get(util.GLOBAL_PREFIX + "Output" + outputId + "Config");		
+			const outputType = flow.get(util.GLOBAL_PREFIX + "Output" + outputId + "Mode");		
 			const configModeValues = util.getConfigModeValue(outputType, value);
 
 			this.status({
