@@ -1,5 +1,5 @@
-const PiconZero = require("./piconzerojs");
-const util = require("./util");
+const PiconZero = require("../../piconzerojs");
+const util = require("../../lib/util");
 
 module.exports = function(RED){
 	function SetOutputConfig(config){
@@ -32,7 +32,7 @@ module.exports = function(RED){
 
 			//Store for later so we can infer things about it.
 			const flow = this.context().flow;
-			flow.set("PiconZero_Output" + outputId + "Config", value);
+			flow.set(util.GLOBAL_PREFIX + "Output" + outputId + "Config", value);
 			
 
 			send(msg);

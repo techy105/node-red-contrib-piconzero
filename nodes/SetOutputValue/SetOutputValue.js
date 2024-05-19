@@ -1,5 +1,5 @@
-const PiconZero = require("./piconzerojs");
-const util = require("./util");
+const PiconZero = require("../../piconzerojs");
+const util = require("../../lib/util");
 
 
 module.exports = function(RED){
@@ -23,7 +23,7 @@ module.exports = function(RED){
 			
 			PiconZero.setOutput(outputId, value);
 
-			const outputType = flow.get("PiconZero_Output" + outputId + "Config");		
+			const outputType = flow.get(util.GLOBAL_PREFIX + "Output" + outputId + "Config");		
 			const configModeValues = util.getConfigModeValue(outputType, value);
 
 			this.status({

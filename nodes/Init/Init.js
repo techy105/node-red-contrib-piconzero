@@ -1,4 +1,5 @@
-const PiconZero = require("./piconzerojs");
+const PiconZero = require("../../piconzerojs");
+const util = require("../../lib/util");
 
 module.exports = function(RED){
 	function InitNode(config){
@@ -15,7 +16,7 @@ module.exports = function(RED){
 			})
 
 			const flow = this.context().flow;
-			flow.set("PiconZero_IsInitialised", true);
+			flow.set(util.GLOBAL_PREFIX + "IsInitialised", true);
 
 
 			send(msg);

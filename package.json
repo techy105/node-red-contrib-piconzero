@@ -7,11 +7,11 @@
  "license": "MIT",
  "node-red": {
   "nodes": {
-   "Initialise": "InitNode.js",
-   "Set Motor": "SetMotorNode.js",
-   "Read Input": "ReadInputNode.js",
-   "Set Output Config": "SetOutputConfig.js",
-   "Set Output Value": "SetOutputValue.js"
+   "Initialise": "nodes/Init/Init.js",
+   "Set Motor": "nodes/SetMotor/SetMotor.js",
+   "Read Input": "nodes/ReadInput/ReadInput.js",
+   "Set Output Mode": "nodes/SetOutputMode/SetOutputMode.js",
+   "Set Output Value": "nodes/SetOutputValue/SetOutputValue.js"
   }
  },
  "dependencies": {

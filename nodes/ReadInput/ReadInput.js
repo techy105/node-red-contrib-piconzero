@@ -1,5 +1,5 @@
-const PiconZero = require("./piconzerojs");
-const util = require("./util");
+const PiconZero = require("../../piconzerojs");
+const util = require("../../lib/util");
 
 module.exports = function(RED){
 	function ReadInputNode(config){
