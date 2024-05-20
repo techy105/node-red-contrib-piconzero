@@ -5,7 +5,7 @@
  "main": "index.js",
  "author": "Marcus white <me@marcus-white.com>",
  "license": "CC BY-SA 3.0",
- "keywords": ["node-red"],
+ "keywords": ["node-red", "piconzero"],
  "repository": {
 	"type": "git",
 	"url": "https://github.com/techy105/node-red-contrib-piconzero.git"
