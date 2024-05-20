@@ -1,7 +1,7 @@
 {
  "name": "node-red-contrib-piconzero",
  "version": "1.0.0",
- "description": "Node Red plugin for PiconZero ported from Python (https://github.com/4tronix/PiconZero/)",
+ "description": "Node Red plugin for Picon Zero ported from Python (https://github.com/4tronix/PiconZero/)",
  "main": "index.js",
  "author": "Marcus white <me@marcus-white.com>",
  "license": "CC BY-SA 3.0",
