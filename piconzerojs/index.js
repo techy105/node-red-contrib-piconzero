@@ -168,10 +168,10 @@ function setOutput (channel, value){
 //---------------------------------------------
 // Set the colour of an individual pixel (always output 5)
 function setPixel (Pixel, Red, Green, Blue, Update=1){
-    pixelData = [Pixel, Red, Green, Blue]
+    pixelData = Buffer.from([Pixel, Red, Green, Blue]);
     for(let i=0;i<I2CRetries;i++){
         try {
-            I2C.writeI2cBlockSync (PZAddr, Update, 4, pixelData)
+            I2C.writeI2cBlockSync(PZAddr, Update, 4, pixelData)
             return true;
         } catch(e){
             console.error(`Error in setPixel(): ${e.message}. Retrying ${i+1}/${I2CRetries}`)
