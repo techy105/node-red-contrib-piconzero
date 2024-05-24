@@ -48,10 +48,16 @@
         <input type="text" id="node-input-value" placeholder="Value" min="-128" max="128">
         <input type="hidden" id="node-input-value-type" >
 
-		<p>Range: -128 - 128</p>
+		<p> 
+			<ul>
+				<li>Off: 0</li>
+				<li>Forward: 1 to 99 (PWM - Pin 1) or 100 to 128 (No PWM)</li>
+				<li>Backwards: -1 to -99 (PWM - Pin 2) or -100 to -128 (No PWM)</li>
+			</ul>
+		</p>
     </div>
 </script>
 
 <script type="text/html" data-help-name="Picon Zero - Set Motor">
-    <p>Sets either motor 1 or 2 to a value between -128 and 128</p>
+    <p>Sets either motor A or B to move forward or backward.</p>
 </script>
