@@ -53,7 +53,7 @@ function getRevision(){
 // Value -1 .. -99 = Reverse (Low, High) with PWM value == -command)
 // PWM is applied to the first motor pin for Forward and the second motor pin for Reverse
 function setMotor(motor, value){
- 	if (motor >= 0 && motor <= 1 && value >= -128 && value < 128){
+ 	if (motor >= 0 && motor <= 1 && value >= -128 && value <= 127){
         for(let i=0;i<I2CRetries;i++){
             try {
                 I2C.writeByteSync(PZAddr, motor, value);
