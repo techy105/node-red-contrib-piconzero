@@ -12,7 +12,7 @@
 				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 100
 
 			},
-			brightness: {
+			pixelBrightness: {
 				value: 40,
 				validate: val => val >= 0 && val <= 40
 			}
@@ -23,10 +23,10 @@
 				types:["num"],
 				typeField: "#node-input-pixelId-type"
 			})
-			$("#node-input-brightness").typedInput({
+			$("#node-input-pixelBrightness").typedInput({
 				type:"num",
 				types:["num"],
-				typeField: "#node-input-brightness-type"
+				typeField: "#node-input-pixelBrightness-type"
 			})
 
 			
@@ -41,9 +41,9 @@
         <input type="hidden" id="node-input-pixelId-type" >
     </div>
      <div class="form-row">
-        <label for="node-input-brightness"><i class="fa fa-tag"></i> Brightness</label>
-        <input type="text" id="node-input-brightness" placeholder="Value">
-        <input type="hidden" id="node-input-brightness-type" placeholder="Value">
+        <label for="node-input-pixelBrightness"><i class="fa fa-tag"></i> Brightness</label>
+        <input type="text" id="node-input-pixelBrightness" placeholder="Value">
+        <input type="hidden" id="node-input-pixelBrightness-type" placeholder="Value">
 
 		<p>Range: 0 (Off) to 40 (Max brightness)</p>
     </div>
