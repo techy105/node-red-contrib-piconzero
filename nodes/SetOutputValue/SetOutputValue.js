@@ -42,5 +42,5 @@ module.exports = function(RED){
 		});
 
 	}
-	RED.nodes.registerType("PiconZero - Set Output Value", SetOutputValue)
+	RED.nodes.registerType("Picon Zero - Set Output Value", SetOutputValue)
 }

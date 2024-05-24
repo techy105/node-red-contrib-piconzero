@@ -13,13 +13,13 @@
  },
  "node-red": {
   "nodes": {
-   "Initialise": "nodes/Init/Init.js",
-   "Set Motor": "nodes/SetMotor/SetMotor.js",
-   "Read Input": "nodes/ReadInput/ReadInput.js",
-   "Set Output Mode": "nodes/SetOutputMode/SetOutputMode.js",
-   "Set Output Value": "nodes/SetOutputValue/SetOutputValue.js",
-   "Set Input Mode": "nodes/SetInputMode/SetInputMode.js",
-   "Cleanup": "nodes/Cleanup/Cleanup.js"
+   "Picon Zero - Initialise": "nodes/Init/Init.js",
+   "Picon Zero - Set Motor": "nodes/SetMotor/SetMotor.js",
+   "Picon Zero - Read Input": "nodes/ReadInput/ReadInput.js",
+   "Picon Zero - Set Output Mode": "nodes/SetOutputMode/SetOutputMode.js",
+   "Picon Zero - Set Output Value": "nodes/SetOutputValue/SetOutputValue.js",
+   "Picon Zero - Set Input Mode": "nodes/SetInputMode/SetInputMode.js",
+   "Picon Zero - Cleanup": "nodes/Cleanup/Cleanup.js"
   }
  },
  "dependencies": {

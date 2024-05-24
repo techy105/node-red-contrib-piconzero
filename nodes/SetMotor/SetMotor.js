@@ -36,5 +36,5 @@ module.exports = function(RED){
 			}
 		})
 	}
-	RED.nodes.registerType("PiconZero - Set Motor", SetMotorNode)
+	RED.nodes.registerType("Picon Zero - Set Motor", SetMotorNode)
 }

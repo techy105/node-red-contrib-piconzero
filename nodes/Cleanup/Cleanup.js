@@ -26,5 +26,5 @@ module.exports = function(RED){
 		});
 
 	}
-	RED.nodes.registerType("PiconZero - Cleanup", Cleanup)
+	RED.nodes.registerType("Picon Zero - Cleanup", Cleanup)
 }
