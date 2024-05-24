@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Picon Zero - Set Pixel Brightness',{
+        category: 'Picon Zero',
+        color: '#FFAAAA',
+        inputs: 1,
+        outputs: 1,
+		icon: "font-awesome/fa-square",
+		align: "left",
+		defaults: {
+			pixelId: { 
+				value: 0,
+				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 100
+
+			},
+			brightness: {
+				value: 40,
+				validate: val => val >= 0 && val <= 40
+			}
+		},
+		oneditprepare: () => {
+			$("#node-input-pixelId").typedInput({
+				type:"num",
+				types:["num"],
+				typeField: "#node-input-pixelId-type"
+			})
+			$("#node-input-brightness").typedInput({
+				type:"num",
+				types:["num"],
+				typeField: "#node-input-brightness-type"
+			})
+
+			
+		}
+    });
+</script>
+
+<script type="text/html" data-template-name="Picon Zero - Set Pixel Brightness">
+     <div class="form-row">
+        <label for="node-input-pixelId"><i class="fa fa-tag"></i> Pixel</label>
+        <input type="text" id="node-input-pixelId" placeholder="Pixel">
+        <input type="hidden" id="node-input-pixelId-type" >
+    </div>
+     <div class="form-row">
+        <label for="node-input-brightness"><i class="fa fa-tag"></i> Brightness</label>
+        <input type="text" id="node-input-brightness" placeholder="Value">
+        <input type="hidden" id="node-input-brightness-type" placeholder="Value">
+
+		<p>Range: 0 (Off) to 40 (Max brightness)</p>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="Picon Zero - Set Pixel Brightness">
+    <p>Sets the brightness of an LED</p>
+</script>

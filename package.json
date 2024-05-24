@@ -20,7 +20,8 @@
    "Picon Zero - Set Output Value": "nodes/SetOutputValue/SetOutputValue.js",
    "Picon Zero - Set Input Mode": "nodes/SetInputMode/SetInputMode.js",
    "Picon Zero - Cleanup": "nodes/Cleanup/Cleanup.js",
-   "Picon Zero - Set Pixel": "nodes/SetPixel/SetPixel.js"
+   "Picon Zero - Set Pixel": "nodes/SetPixel/SetPixel.js",
+   "Picon Zero - Set Pixel Brightness": "nodes/SetPixel/SetPixelBrightness.js"
   }
  },
  "dependencies": {
