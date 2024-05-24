@@ -1,0 +1,86 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Picon Zero - Set Pixel',{
+        category: 'Picon Zero',
+        color: '#FFAAAA',
+        inputs: 1,
+        outputs: 1,
+		icon: "font-awesome/fa-square",
+		align: "left",
+		defaults: {
+			pixelid: { 
+				value: 0,
+				validate: val => parseInt(val) !== NaN &&  val >= 0 && val <= 100
+
+			},
+			pixelRed: {
+				value: 0,
+				validate: val => val >= 0 && val <= 255
+			},
+			pixelGreen: {
+				value: 0,
+				validate: val => val >= 0 && val <= 255
+			},
+			pixelBlue: {
+				value: 0,
+				validate: val => val >= 0 && val <= 255
+			}
+		},
+		oneditprepare: () => {
+			$("#node-input-pixelId").typedInput({
+				type:"num",
+				types:["num"],
+				typeField: "#node-input-pixelId-type"
+			})
+			$("#node-input-pixelBlue").typedInput({
+				type:"num",
+				types:["num"],
+				typeField: "#node-input-pixelBlue-type",
+				max: 255,
+				min: 0
+			})
+			$("#node-input-pixelGreen").typedInput({
+				type:"num",
+				types:["num"],
+				typeField: "#node-input-pixelGreen-type",
+				max: 255,
+				min: 0
+			})
+			$("#node-input-pixelRed").typedInput({
+				type:"num",
+				types:["num"],
+				typeField: "#node-input-pixelRed-type",
+				max: 255,
+				min: 0
+			})
+
+			
+		}
+    });
+</script>
+
+<script type="text/html" data-template-name="Picon Zero - Set Pixel">
+     <div class="form-row">
+        <label for="node-input-pixelId"><i class="fa fa-tag"></i> Pixel</label>
+        <input type="text" id="node-input-pixelId" placeholder="Output id">
+        <input type="hidden" id="node-input-pixelId-type" >
+    </div>
+     <div class="form-row">
+        <label for="node-input-pixelRed"><i class="fa fa-tag"></i> Red</label>
+        <input type="text" id="node-input-pixelRed" placeholder="Value">
+        <input type="hidden" id="node-input-pixelRed-type" placeholder="Value">
+    </div>
+     <div class="form-row">
+        <label for="node-input-pixelGreen"><i class="fa fa-tag"></i> Green</label>
+        <input type="text" id="node-input-pixelGreen" placeholder="Value">
+        <input type="hidden" id="node-input-pixelGreen-type" placeholder="Value">
+    </div>
+     <div class="form-row">
+        <label for="node-input-pixelBlue"><i class="fa fa-tag"></i> Blue</label>
+        <input type="text" id="node-input-pixelBlue" placeholder="Value">
+        <input type="hidden" id="node-input-pixelBlue-type" placeholder="Value">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="Picon Zero - Set Pixel">
+    <p>Sets the colour of a pixel. Output 5 is used for this only.</p>
+</script>
