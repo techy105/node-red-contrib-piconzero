@@ -3,7 +3,7 @@ const util = require("../../lib/util");
 
 
 module.exports = function(RED){
-	function SetPixel(config){
+	function SetPixelBrightness(config){
 		RED.nodes.createNode(this, config);
 		this.on("input", function(msg, send, done) {	
 			util.checkIsInitialised(this);
@@ -13,30 +13,20 @@ module.exports = function(RED){
 				throw new Error("'output[pixelId]' not found in payload or node config.")
 			}
 
-			const pixelRed = parseInt(msg.payload?.output?.pixelRed || config.pixelRed);
-			if(pixelRed === NaN){
-				throw new Error("'output[pixelRed]' not found in payload or node config.")
+			const pixelBrightness = parseInt(msg.payload?.output?.pixelBrightness || config.pixelBrightness);
+			if(pixelBrightness === NaN){
+				throw new Error("'output[pixelBrightness]' not found in payload or node config.")
 			}
 
-			const pixelGreen = parseInt(msg.payload?.output?.pixelGreen || config.pixelGreen);
-			if(pixelGreen === NaN){
-				throw new Error("'output[pixelGreen]' not found in payload or node config.")
-			}
-
-			const pixelBlue = parseInt(msg.payload?.output?.pixelBlue || config.pixelBlue);
-			if(pixelBlue === NaN){
-				throw new Error("'output[pixelBlue]' not found in payload or node config.")
-			}
-
-			//This only works for output 5
-			PiconZero.setOutputConfig(5, 3);
-			PiconZero.setPixel(pixelId, pixelRed, pixelGreen, pixelBlue);
+			
+			//This only works for output 5			
+			PiconZero.setBrightness(pixelBrightness);
 
 
 			this.status({
 				fill: "blue",
 				shape: "ring",
-				text: `Pixel ${pixelId}: Red ${pixelRed}, Green: ${pixelGreen}, Blue: ${pixelBlue}`
+				text: `Pixel ${pixelId} brightness set to ${Math.round(pixelBrightness/40*100)}`
 			});
 
 			send(msg);
@@ -49,5 +39,5 @@ module.exports = function(RED){
 		});
 
 	}
-	RED.nodes.registerType("Picon Zero - Set Pixel", SetPixel)
+	RED.nodes.registerType("Picon Zero - Set Pixel Brightness", SetPixelBrightness)
 }
