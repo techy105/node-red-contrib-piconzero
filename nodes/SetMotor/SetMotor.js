@@ -22,6 +22,12 @@ module.exports = function(RED){
 
 			PiconZero.setMotor(motorId, value);
 
+			this.status({
+				fill: "blue",
+				shape: "ring",
+				text: `Motor ${motorId} set to ${value}`
+			});
+
 			send(msg);
 			if(done){
 				done();
