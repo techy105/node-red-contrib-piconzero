@@ -30,7 +30,7 @@ module.exports = function(RED){
 
 			//This only works for output 5
 			PiconZero.setOutputConfig(5, 3);
-			PiconZero.setPixel(pixelId, pixelRed, pixelGreen, pixelBlue, value);
+			PiconZero.setPixel(pixelId, pixelRed, pixelGreen, pixelBlue);
 
 
 			this.status({
