@@ -52,5 +52,5 @@ module.exports = function(RED){
 		});
 
 	}
-	RED.nodes.registerType("Set Input Mode", SetInputMode)
+	RED.nodes.registerType("PiconZero - Set Input Mode", SetInputMode)
 }

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('Set Motor',{
+    RED.nodes.registerType('PiconZero - Set Motor',{
         category: 'Picon Zero',
         color: '#FFAAAA',
         inputs: 1,
@@ -18,7 +18,7 @@
 		},
 		oneditprepare: () => {
 			$("#node-input-motorid").typedInput({
-				type:"motorid",
+				type:"num",
 				types: [
 					{
 						value: 0,
@@ -39,7 +39,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="Set Motor">
+<script type="text/html" data-template-name="PiconZero - Set Motor">
      <div class="form-row">
         <label for="node-input-motorid"><i class="fa fa-tag"></i> Motor id</label>
         <input type="text" id="node-input-motorid" placeholder="Motor id">
@@ -53,6 +53,6 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="Set Motor">
+<script type="text/html" data-help-name="PiconZero - Set Motor">
     <p>Sets either motor 1 or 2 to a value between -128 and 128</p>
 </script>

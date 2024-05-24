@@ -35,5 +35,5 @@ module.exports = function(RED){
 			}
 		})
 	}
-	RED.nodes.registerType("Initialise", InitNode)
+	RED.nodes.registerType("PiconZero - Initialise", InitNode)
 }

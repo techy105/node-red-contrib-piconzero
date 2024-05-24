@@ -61,5 +61,5 @@ module.exports = function(RED){
 		})
 
 	}
-	RED.nodes.registerType("Set Output Mode", SetOutputMode)
+	RED.nodes.registerType("PiconZero - Set Output Mode", SetOutputMode)
 }
