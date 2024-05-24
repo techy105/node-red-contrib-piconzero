@@ -46,6 +46,12 @@ function getRevision(){
 	throw new Error("Error in getRevision(), tried "+ I2CRetries + " times")
 }
 
+// Value 0 = OFF (Low-Low)
+// Value 100+ = Forward (High, Low) no PWM
+// Value -100 = Backward (Low, High) no PWM
+// Value 1..99 = Forward (High, Low) with PWM value == value
+// Value -1 .. -99 = Reverse (Low, High) with PWM value == -command)
+// PWM is applied to the first motor pin for Forward and the second motor pin for Reverse
 function setMotor(motor, value){
  	if (motor >= 0 && motor <= 1 && value >= -128 && value < 128){
         for(let i=0;i<I2CRetries;i++){
@@ -161,11 +167,11 @@ function setOutput (channel, value){
 
 //---------------------------------------------
 // Set the colour of an individual pixel (always output 5)
-function setPixel (Pixel, Red, Green, Blue, Update=true){
+function setPixel (Pixel, Red, Green, Blue, Update=1){
     pixelData = [Pixel, Red, Green, Blue]
     for(let i=0;i<I2CRetries;i++){
         try {
-            I2C.writeI2cBlockSync (PZAddr, Update, pixelData)
+            I2C.writeI2cBlockSync (PZAddr, Update, 4, pixelData)
             return true;
         } catch(e){
             console.error(`Error in setPixel(): ${e.message}. Retrying ${i+1}/${I2CRetries}`)
@@ -175,7 +181,7 @@ function setPixel (Pixel, Red, Green, Blue, Update=true){
 	throw new Error("Error in setPixel(), tried "+ I2CRetries + " times")
 }
 
-function setAllPixels (Red, Green, Blue, Update=true){
+function setAllPixels (Red, Green, Blue, Update=1){
     pixelData = [100, Red, Green, Blue]
     for(let i=0;i<I2CRetries;i++){
         try {
